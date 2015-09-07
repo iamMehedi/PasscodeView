@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PasscodeView">
+        <attr name="numDigits" format="integer"/>
+        <attr name="digitelevation" format="dimension"/>
+        <attr name="digitRadius" format="dimension"/>
+        <attr name="controlColor" format="color"/>
+        <attr name="controlColorActivated" format="color"/>
+        <attr name="digitColorFilled" format="color"/>
+        <attr name="digitColorBorder" format="color"/>
+    </declare-styleable>
+</resources>
