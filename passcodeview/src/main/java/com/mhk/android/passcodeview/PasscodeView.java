@@ -74,7 +74,7 @@ public class PasscodeView extends ViewGroup{
         mDigitSpacing = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, metrics);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mDigitElevation = array.getDimensionPixelSize(R.styleable.PasscodeView_digitelevation, 0);
+            mDigitElevation = array.getDimensionPixelSize(R.styleable.PasscodeView_digitElevation, 0);
         }
 
         // Get theme to resolve defaults

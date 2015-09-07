@@ -2,7 +2,7 @@
 <resources>
     <declare-styleable name="PasscodeView">
         <attr name="numDigits" format="integer"/>
-        <attr name="digitelevation" format="dimension"/>
+        <attr name="digitElevation" format="dimension"/>
         <attr name="digitRadius" format="dimension"/>
         <attr name="controlColor" format="color"/>
         <attr name="controlColorActivated" format="color"/>
