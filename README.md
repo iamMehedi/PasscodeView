@@ -4,7 +4,7 @@ An android widget to input passcode.
 ##Usage
 `PasscodeView` is a `ViewGroup` subclass. So it can easily be added in any xml layout files.
 
-```
+```xml
 <com.mhk.android.passcodeview.PasscodeView
         android:id="@+id/passcode_view"
         android:layout_width="wrap_content"
@@ -24,6 +24,15 @@ An android widget to input passcode.
 
 ###Listener:`PasscodeEntryListener`
 - `onPasscodeEntered(String passcode)` - Called when all the digits of the passcode has been entered
+
+```java
+passcodeView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
+            @Override
+            public void onPasscodeEntered(String passcode) {
+                Toast.makeText(SampleActivity.this, "Passcode entered: " + passcode, Toast.LENGTH_SHORT).show();
+            }
+        });
+```
 
 ###XML Attributes
 - `numDigits` - Number of passcode digits
