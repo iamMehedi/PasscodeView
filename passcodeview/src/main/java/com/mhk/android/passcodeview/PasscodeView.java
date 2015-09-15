@@ -175,10 +175,7 @@ public class PasscodeView extends ViewGroup{
             public void onFocusChange(View v, boolean hasFocus) {
                 // Update the selected state of the views
                 int length = mEditText.getText().length();
-                for (int i = 0; i < mDigitCount; i++) {
-                    getChildAt(i).setSelected(hasFocus && i == length);
-                }
-
+                updateChilViewSelectionStates(length, hasFocus);
                 // Make sure the cursor is at the end
                 mEditText.setSelection(length);
 
@@ -201,9 +198,7 @@ public class PasscodeView extends ViewGroup{
             @Override
             public void afterTextChanged(Editable s) {
                 int length = s.length();
-                for (int i = 0; i < mDigitCount; i++) {
-                    getChildAt(i).setSelected(mEditText.hasFocus() && i == length);
-                }
+                updateChilViewSelectionStates(length, mEditText.hasFocus());
 
                 if (length == mDigitCount && mPasscodeEntryListener != null) {
                     mPasscodeEntryListener.onPasscodeEntered(s.toString());
@@ -213,6 +208,12 @@ public class PasscodeView extends ViewGroup{
         addView(mEditText);
 
         invalidate();
+    }
+
+    private void updateChilViewSelectionStates(int length, boolean hasFocus){
+        for (int i = 0; i < mDigitCount; i++) {
+            getChildAt(i).setSelected(hasFocus && i == length);
+        }
     }
 
     /**
@@ -234,6 +235,7 @@ public class PasscodeView extends ViewGroup{
             text = text.subSequence(0, mDigitCount);
         }
         mEditText.setText(text);
+        invalidateChildViews();
     }
 
     /**
@@ -241,6 +243,14 @@ public class PasscodeView extends ViewGroup{
      */
     public void clearText() {
         mEditText.setText("");
+        invalidateChildViews();
+    }
+
+    private void invalidateChildViews(){
+        for(int i =0; i<mDigitCount; i++)
+        {
+            getChildAt(i).invalidate();
+        }
     }
 
     public void setPasscodeEntryListener(PasscodeEntryListener mPasscodeEntryListener) {
