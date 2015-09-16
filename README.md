@@ -3,8 +3,20 @@
 
 An android widget to input passcode.
 
+##Setup
+###Maven
+```xml
+<dependency>
+    <groupId>com.github.iammehedi</groupId>
+    <artifactId>passcodeview</artifactId>
+    <version>1.01</version>
+</dependency>
+```
+###Gradle
+`compile 'com.github.iammehedi:passcodeview:1.01'`
+
 ##Usage
-`PasscodeView` is a `ViewGroup` subclass. So it can easily be added in any xml layout files.
+`PasscodeView` is a `ViewGroup` subclass. So it can easily be added in any xml layout file.
 
 ```xml
 <com.mhk.android.passcodeview.PasscodeView
