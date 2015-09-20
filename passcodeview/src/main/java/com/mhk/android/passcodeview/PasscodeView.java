@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -169,6 +170,7 @@ public class PasscodeView extends ViewGroup{
         mEditText.setCursorVisible(false);
         mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(mDigitCount)});
         mEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+        mEditText.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         mEditText.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         mEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
