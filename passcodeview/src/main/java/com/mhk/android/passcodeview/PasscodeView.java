@@ -81,32 +81,46 @@ public class PasscodeView extends ViewGroup{
         // Get theme to resolve defaults
         Resources.Theme theme = getContext().getTheme();
 
+        mControlColor = Color.DKGRAY;
         // Text colour, default to android:colorControlNormal from theme
-        TypedValue controlColor = new TypedValue();
-        theme.resolveAttribute(android.R.attr.colorControlNormal, controlColor, true);
-        mControlColor = controlColor.resourceId > 0 ? getResources().getColor(controlColor.resourceId) :
-                controlColor.data;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TypedValue controlColor = new TypedValue();
+            theme.resolveAttribute(android.R.attr.colorControlNormal, controlColor, true);
+            mControlColor = controlColor.resourceId > 0 ? getResources().getColor(controlColor.resourceId) :
+                    controlColor.data;
+        }
         mControlColor = array.getColor(R.styleable.PasscodeView_controlColor, mControlColor);
 
         // Accent colour, default to android:colorAccent from theme
-        TypedValue accentColor = new TypedValue();
-        theme.resolveAttribute(R.attr.colorControlHighlight, accentColor, true);
-        mHighlightedColor = accentColor.resourceId > 0 ? getResources().getColor(accentColor.resourceId) :
-                accentColor.data;
+        mHighlightedColor = Color.LTGRAY;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TypedValue accentColor = new TypedValue();
+            theme.resolveAttribute(R.attr.colorControlHighlight, accentColor, true);
+            mHighlightedColor = accentColor.resourceId > 0 ? getResources().getColor(accentColor.resourceId) :
+                    accentColor.data;
+        }
         mHighlightedColor = array.getColor(R.styleable.PasscodeView_controlColorActivated, mHighlightedColor);
 
         //color for the inner circle
-        TypedValue innerColor = new TypedValue();
-        theme.resolveAttribute(android.R.attr.colorPrimary, innerColor, true);
-        mInnerColor = innerColor.resourceId > 0 ? getResources().getColor(innerColor.resourceId) :
-                innerColor.data;
+        mInnerColor = Color.CYAN;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TypedValue innerColor = new TypedValue();
+            theme.resolveAttribute(android.R.attr.colorPrimary, innerColor, true);
+            mInnerColor = innerColor.resourceId > 0 ? getResources().getColor(innerColor.resourceId) :
+                    innerColor.data;
+        }
         mInnerColor = array.getColor(R.styleable.PasscodeView_digitColorFilled, mInnerColor);
 
         //color for the inner circle border
-        TypedValue innerBorderColor = new TypedValue();
-        theme.resolveAttribute(android.R.attr.colorPrimaryDark, innerBorderColor, true);
-        mInnerBorderColor = innerBorderColor.resourceId > 0 ? getResources().getColor(innerBorderColor.resourceId) :
-                innerBorderColor.data;
+        mInnerBorderColor = Color.GREEN;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TypedValue innerBorderColor = new TypedValue();
+            theme.resolveAttribute(android.R.attr.colorPrimaryDark, innerBorderColor, true);
+            mInnerBorderColor = innerBorderColor.resourceId > 0 ? getResources().getColor(innerBorderColor.resourceId) :
+                    innerBorderColor.data;
+        }
         mInnerBorderColor = array.getColor(R.styleable.PasscodeView_digitColorBorder, mInnerBorderColor);
 
         // Recycle the typed array
