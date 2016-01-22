@@ -9,11 +9,11 @@ An android widget to input passcode.
 <dependency>
     <groupId>com.github.iammehedi</groupId>
     <artifactId>passcodeview</artifactId>
-    <version>1.01</version>
+    <version>1.03</version>
 </dependency>
 ```
 ###Gradle
-`compile 'com.github.iammehedi:passcodeview:1.01'`
+`compile 'com.github.iammehedi:passcodeview:1.03'`
 
 ##Usage
 `PasscodeView` is a `ViewGroup` subclass. So it can easily be added in any xml layout file.
