@@ -3,8 +3,8 @@
 
 An android widget to input passcode.
 
-##Setup
-###Maven
+## Setup
+### Maven
 ```xml
 <dependency>
     <groupId>com.github.iammehedi</groupId>
@@ -12,10 +12,10 @@ An android widget to input passcode.
     <version>1.03</version>
 </dependency>
 ```
-###Gradle
+### Gradle
 `compile 'com.github.iammehedi:passcodeview:1.03'`
 
-##Usage
+## Usage
 `PasscodeView` is a `ViewGroup` subclass. So it can easily be added in any xml layout file.
 
 ```xml
@@ -29,14 +29,14 @@ An android widget to input passcode.
         />
 ```
 
-###Methods
+### Methods
 - `requestToShowKeyboard()` - Request the PasscodeView to be focused programmatically
 - `setText(CharSequence text)` - Set Passcode programmatically
 - `clearText()` - Clear Passcode
 - `getText()` - get entered Passcode
 - `setPasscodeEntryListener(PasscodeEntryListener mPasscodeEntryListener)` - Set a listener to get notified when the Passcode has been entered
 
-###Listener:`PasscodeEntryListener`
+### Listener:`PasscodeEntryListener`
 - `onPasscodeEntered(String passcode)` - Called when all the digits of the passcode has been entered
 
 ```java
@@ -48,7 +48,7 @@ passcodeView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
         });
 ```
 
-###XML Attributes
+### XML Attributes
 - `numDigits` - Number of passcode digits
 - `digitElevation` - Elevation of each digit, only applicable for OS version >= Lollipop
 - `digitRadius` - radius for digit circle `16dip` by default
@@ -57,10 +57,10 @@ passcodeView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
 - `digitColorFilled` - fill color of the inner circle, by default `android:colorPrimary`
 - `digitColorBorder` - border color of the inner circle, by default `android:colorPrimaryDark`
 
-##Demo
+## Demo
 ![image](demo.gif)
 
-##License
+## License
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
