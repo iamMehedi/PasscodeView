@@ -7,19 +7,22 @@ An android widget to input passcode.
 ### Maven
 ```xml
 <dependency>
-    <groupId>com.github.iammehedi</groupId>
-    <artifactId>passcodeview</artifactId>
-    <version>1.03</version>
+  <groupId>online.devliving</groupId>
+  <artifactId>passcodeview</artifactId>
+  <version>1.0.3</version>
+  <type>pom</type>
 </dependency>
 ```
 ### Gradle
-`compile 'com.github.iammehedi:passcodeview:1.03'`
+```groovy
+compile 'online.devliving:passcodeview:1.0.3'
+```
 
 ## Usage
 `PasscodeView` is a `ViewGroup` subclass. So it can easily be added in any xml layout file.
 
 ```xml
-<com.mhk.android.passcodeview.PasscodeView
+<online.devliving.passcodeview.PasscodeView
         android:id="@+id/passcode_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,6 +55,7 @@ passcodeView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
 - `numDigits` - Number of passcode digits
 - `digitElevation` - Elevation of each digit, only applicable for OS version >= Lollipop
 - `digitRadius` - radius for digit circle `16dip` by default
+- `digitInnerRadius` - radius for digit inner circle `10dip` by default
 - `controlColor` - color of the outer circle in normal state, by default `android:colorControlNormal`
 - `controlColorActivated` - color of outer circle when focused, by default `android:colorControlHighlighted`
 - `digitColorFilled` - fill color of the inner circle, by default `android:colorPrimary`

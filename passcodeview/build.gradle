@@ -98,7 +98,7 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = "PasscodeView"
+        repo = "Maven"
         // it is the name that appears in bintray when logged
         name = "online.devliving:passcodeview"
         websiteUrl = siteUrl
