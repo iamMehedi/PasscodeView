@@ -7,12 +7,14 @@
     android:padding="@dimen/activity_vertical_margin"
     android:background="@android:color/white">
 
-    <com.mhk.android.passcodeview.PasscodeView
+    <online.devliving.passcodeview.PasscodeView
         android:id="@+id/passcode_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         passcodeView:numDigits="5"
+        passcodeView:digitRadius="16dp"
+        passcodeView:digitInnerRadius="10dp"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         />
 

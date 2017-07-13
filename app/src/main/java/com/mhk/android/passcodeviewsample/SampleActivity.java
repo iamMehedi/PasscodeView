@@ -1,13 +1,11 @@
 package com.mhk.android.passcodeviewsample;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.mhk.android.passcodeview.PasscodeView;
+import online.devliving.passcodeview.PasscodeView;
 
 /**
  * Created by Mehedi Hasan Khan on 9/6/15.

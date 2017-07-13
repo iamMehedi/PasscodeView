@@ -1,4 +1,4 @@
-package com.mhk.android.passcodeview;
+package online.devliving.passcodeview;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -69,7 +69,13 @@ public class PasscodeView extends ViewGroup{
                 (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, metrics));
         mOuterStrokeWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, metrics);
         mInnerStrokeWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, metrics);
-        mDigitInnerRadius = mDigitRadius - ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6, metrics));
+        mDigitInnerRadius = array.getDimensionPixelSize(R.styleable.PasscodeView_digitInnerRadius,
+                mDigitRadius - ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6, metrics)));
+
+        if(mDigitInnerRadius > mDigitRadius){
+            mDigitInnerRadius = mDigitRadius - ((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6, metrics));
+        }
+
         mDigitWidth = (mDigitRadius + mOuterStrokeWidth) * 2;
 
         mDigitSpacing = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, metrics);

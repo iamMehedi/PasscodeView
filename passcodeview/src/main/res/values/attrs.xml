@@ -4,6 +4,7 @@
         <attr name="numDigits" format="integer"/>
         <attr name="digitElevation" format="dimension"/>
         <attr name="digitRadius" format="dimension"/>
+        <attr name="digitInnerRadius" format="dimension"/>
         <attr name="controlColor" format="color"/>
         <attr name="controlColorActivated" format="color"/>
         <attr name="digitColorFilled" format="color"/>

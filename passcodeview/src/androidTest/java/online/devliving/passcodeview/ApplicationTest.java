@@ -1,4 +1,4 @@
-package com.mhk.android.passcodeview;
+package online.devliving.passcodeview;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
