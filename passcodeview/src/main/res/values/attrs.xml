@@ -9,5 +9,6 @@
         <attr name="controlColorActivated" format="color"/>
         <attr name="digitColorFilled" format="color"/>
         <attr name="digitColorBorder" format="color"/>
+        <attr name="controlFilled" format="boolean"/>
     </declare-styleable>
 </resources>

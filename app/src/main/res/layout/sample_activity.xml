@@ -14,7 +14,9 @@
         android:layout_gravity="center_horizontal"
         passcodeView:numDigits="5"
         passcodeView:digitRadius="16dp"
-        passcodeView:digitInnerRadius="10dp"
+        passcodeView:digitInnerRadius="2dp"
+        passcodeView:digitColorFilled="#ff0000"
+        passcodeView:controlFilled="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         />
 
