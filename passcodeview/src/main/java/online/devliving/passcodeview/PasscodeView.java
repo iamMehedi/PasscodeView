@@ -45,6 +45,8 @@ public class PasscodeView extends ViewGroup{
     private int mInnerColor;
     private int mInnerBorderColor;
 
+    private boolean mIsControlFilled = false;
+
     private OnFocusChangeListener mOnFocusChangeListener;
     private PasscodeEntryListener mPasscodeEntryListener;
 
@@ -96,6 +98,9 @@ public class PasscodeView extends ViewGroup{
                     controlColor.data;
         }
         mControlColor = array.getColor(R.styleable.PasscodeView_controlColor, mControlColor);
+
+        // If control should be fully filled instead of stroked
+        mIsControlFilled = array.getBoolean(R.styleable.PasscodeView_controlFilled, false);
 
         // Accent colour, default to android:colorAccent from theme
         mHighlightedColor = Color.LTGRAY;
@@ -392,7 +397,11 @@ public class PasscodeView extends ViewGroup{
             mOuterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             mOuterPaint.setAlpha(255);
             mOuterPaint.setDither(true);
-            mOuterPaint.setStyle(Paint.Style.STROKE);
+            if (mIsControlFilled) {
+                mOuterPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+            } else {
+                mOuterPaint.setStyle(Paint.Style.STROKE);
+            }
             mOuterPaint.setStrokeWidth(mOuterStrokeWidth);
             mOuterPaint.setStrokeCap(Paint.Cap.ROUND);
             mOuterPaint.setStrokeJoin(Paint.Join.ROUND);

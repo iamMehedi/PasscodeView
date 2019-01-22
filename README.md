@@ -59,6 +59,7 @@ passcodeView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
 - `digitInnerRadius` - radius for digit inner circle `10dip` by default
 - `controlColor` - color of the outer circle in normal state, by default `android:colorControlNormal`
 - `controlColorActivated` - color of outer circle when focused, by default `android:colorControlHighlighted`
+- `controlFilled` - if control should be fully filled instead of just stroked by default
 - `digitColorFilled` - fill color of the inner circle, by default `android:colorPrimary`
 - `digitColorBorder` - border color of the inner circle, by default `android:colorPrimaryDark`
 
