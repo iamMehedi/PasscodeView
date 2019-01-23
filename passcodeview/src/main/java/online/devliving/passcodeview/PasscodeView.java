@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -46,6 +47,8 @@ public class PasscodeView extends ViewGroup{
     private int mInnerBorderColor;
 
     private boolean mIsControlFilled = false;
+    private boolean mIsDigitMaksed = true;
+    private float mDigitTextSize;
 
     private OnFocusChangeListener mOnFocusChangeListener;
     private PasscodeEntryListener mPasscodeEntryListener;
@@ -101,6 +104,13 @@ public class PasscodeView extends ViewGroup{
 
         // If control should be fully filled instead of stroked
         mIsControlFilled = array.getBoolean(R.styleable.PasscodeView_controlFilled, false);
+
+        // If digits should be masked or shown as digits
+        mIsDigitMaksed = array.getBoolean(R.styleable.PasscodeView_masked, true);
+
+        // Size of the numbers if not masked
+        mDigitTextSize = array.getDimensionPixelSize(R.styleable.PasscodeView_digitTextSize,
+                (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14, metrics));
 
         // Accent colour, default to android:colorAccent from theme
         mHighlightedColor = Color.LTGRAY;
@@ -412,6 +422,7 @@ public class PasscodeView extends ViewGroup{
             mInnerPaint.setStyle(Paint.Style.FILL_AND_STROKE);
             mInnerPaint.setStrokeWidth(mInnerStrokeWidth);
             mInnerPaint.setStrokeCap(Paint.Cap.ROUND);
+            mInnerPaint.setTextSize(mDigitTextSize);
             mInnerPaint.setStrokeJoin(Paint.Join.ROUND);
             mInnerPaint.setColor(mInnerColor);
 
@@ -422,6 +433,8 @@ public class PasscodeView extends ViewGroup{
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
             setMeasuredDimension(mDigitWidth, mDigitWidth);
         }
+
+        private Rect r = new Rect();
 
         @Override
         protected void onDraw(Canvas canvas) {
@@ -437,9 +450,21 @@ public class PasscodeView extends ViewGroup{
             }
             canvas.drawColor(Color.TRANSPARENT);
             canvas.drawCircle(center, center, mDigitRadius, mOuterPaint);
-            if(mEditText.getText().length() > mPosition)
-            {
-                canvas.drawCircle(center, center, mDigitInnerRadius, mInnerPaint);
+            if (mEditText.getText().length() > mPosition) {
+                if (mIsDigitMaksed) {
+                    canvas.drawCircle(center, center, mDigitInnerRadius, mInnerPaint);
+                } else {
+                    String text = String.valueOf(mEditText.getText().charAt(mPosition));
+                    canvas.getClipBounds(r);
+                    int cHeight = r.height();
+                    int cWidth = r.width();
+                    mInnerPaint.setTextAlign(Paint.Align.LEFT);
+                    mInnerPaint.getTextBounds(text, 0, text.length(), r);
+                    float xPos = cWidth / 2f - r.width() / 2f - r.left;
+                    float yPos = cHeight / 2f + r.height() / 2f - r.bottom;
+
+                    canvas.drawText(text, xPos, yPos, mInnerPaint);
+                }
             }
         }
     }

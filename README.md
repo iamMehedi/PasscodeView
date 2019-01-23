@@ -54,6 +54,8 @@ passcodeView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
 
 ### XML Attributes
 - `numDigits` - Number of passcode digits
+- `masked` - If digits should be masked or not, `true` by default
+- `digitTextSize` - Size of the digits if fields are not masked, `14sp` by default
 - `digitElevation` - Elevation of each digit, only applicable for OS version >= Lollipop
 - `digitRadius` - radius for digit circle `16dip` by default
 - `digitInnerRadius` - radius for digit inner circle `10dip` by default
