@@ -20,4 +20,19 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         />
 
+    <online.devliving.passcodeview.PasscodeView
+        android:id="@+id/passcode_view_non_masked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        passcodeView:numDigits="5"
+        passcodeView:masked="false"
+        passcodeView:digitTextSize="12sp"
+        passcodeView:digitRadius="16dp"
+        passcodeView:digitInnerRadius="2dp"
+        passcodeView:digitColorFilled="#fff"
+        passcodeView:controlFilled="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        />
+
 </LinearLayout>
