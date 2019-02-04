@@ -38,13 +38,20 @@ compile 'online.devliving:passcodeview:1.0.3'
 - `setText(CharSequence text)` - Set Passcode programmatically
 - `clearText()` - Clear Passcode
 - `getText()` - get entered Passcode
+- `swetError(boolean value)` - set the error state of view
 - `setPasscodeEntryListener(PasscodeEntryListener mPasscodeEntryListener)` - Set a listener to get notified when the Passcode has been entered
 
 ### Listener:`PasscodeEntryListener`
+- `onPasscodeDigitEntered()` - Called when a digit of the passcode has been entered
 - `onPasscodeEntered(String passcode)` - Called when all the digits of the passcode has been entered
 
 ```java
 passcodeView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
+            @Override
+            public void onPasscodeDigitEntered() {
+                // Next digit of the passcode was entered
+            }
+
             @Override
             public void onPasscodeEntered(String passcode) {
                 Toast.makeText(SampleActivity.this, "Passcode entered: " + passcode, Toast.LENGTH_SHORT).show();
@@ -61,6 +68,7 @@ passcodeView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
 - `digitInnerRadius` - radius for digit inner circle `10dip` by default
 - `controlColor` - color of the outer circle in normal state, by default `android:colorControlNormal`
 - `controlColorActivated` - color of outer circle when focused, by default `android:colorControlHighlighted`
+- `controlColorError` - color of the outer circle in error state, by default `red`
 - `controlFilled` - if control should be fully filled instead of just stroked by default
 - `digitColorFilled` - fill color of the inner circle, by default `android:colorPrimary`
 - `digitColorBorder` - border color of the inner circle, by default `android:colorPrimaryDark`

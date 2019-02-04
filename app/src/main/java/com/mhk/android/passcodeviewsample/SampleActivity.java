@@ -18,6 +18,7 @@ public class SampleActivity extends AppCompatActivity{
         setContentView(R.layout.sample_activity);
 
         final PasscodeView pcView = (PasscodeView) findViewById(R.id.passcode_view);
+        pcView.setError(true);
 
         pcView.postDelayed(new Runnable() {
             @Override
@@ -27,6 +28,11 @@ public class SampleActivity extends AppCompatActivity{
         }, 400);
 
         pcView.setPasscodeEntryListener(new PasscodeView.PasscodeEntryListener() {
+            @Override
+            public void onPasscodeDigitEntered() {
+                pcView.setError(false);
+            }
+
             @Override
             public void onPasscodeEntered(String passcode) {
                 Toast.makeText(SampleActivity.this, "Passcode entered: " + passcode, Toast.LENGTH_SHORT).show();
