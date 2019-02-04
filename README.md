@@ -1,6 +1,10 @@
 # PasscodeView
+## Original library
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [ ![Download](https://api.bintray.com/packages/iammehedi/Maven/online.devliving%3Apasscodeview/images/download.svg) ](https://bintray.com/iammehedi/Maven/online.devliving%3Apasscodeview/_latestVersion)
+
+## This fork on Jitpack
+[![](https://jitpack.io/v/dryaz/PasscodeView.svg)](https://jitpack.io/#dryaz/PasscodeView)
 
 An android widget to input passcode.
 
