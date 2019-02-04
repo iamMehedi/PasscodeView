@@ -330,6 +330,7 @@ public class PasscodeView extends ViewGroup{
      * @param value Error value
      */
     public void setError(boolean value) {
+        if (mIsError == value) return;
         mIsError = value;
         invalidateChildViews();
     }
