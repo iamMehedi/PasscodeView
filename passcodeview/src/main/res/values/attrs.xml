@@ -7,6 +7,7 @@
         <attr name="digitInnerRadius" format="dimension"/>
         <attr name="controlColor" format="color"/>
         <attr name="controlColorActivated" format="color"/>
+        <attr name="controlColorError" format="color"/>
         <attr name="digitColorFilled" format="color"/>
         <attr name="digitColorBorder" format="color"/>
         <attr name="controlFilled" format="boolean"/>

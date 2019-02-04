@@ -50,6 +50,9 @@ public class PasscodeView extends ViewGroup{
     private boolean mIsDigitMaksed = true;
     private float mDigitTextSize;
 
+    private int mErrorColor;
+    private boolean mIsError = false;
+
     private OnFocusChangeListener mOnFocusChangeListener;
     private PasscodeEntryListener mPasscodeEntryListener;
 
@@ -122,6 +125,11 @@ public class PasscodeView extends ViewGroup{
                     accentColor.data;
         }
         mHighlightedColor = array.getColor(R.styleable.PasscodeView_controlColorActivated, mHighlightedColor);
+
+        // Error color, default is RED
+        mErrorColor = Color.RED;
+
+        mErrorColor = array.getColor(R.styleable.PasscodeView_controlColorError, mErrorColor);
 
         //color for the inner circle
         mInnerColor = Color.CYAN;
@@ -236,7 +244,7 @@ public class PasscodeView extends ViewGroup{
             public void afterTextChanged(Editable s) {
                 int length = s.length();
                 updateChilViewSelectionStates(length, mEditText.hasFocus());
-
+                mPasscodeEntryListener.onPasscodeDigitEntered();
                 if (length == mDigitCount && mPasscodeEntryListener != null) {
                     mPasscodeEntryListener.onPasscodeEntered(s.toString());
                 }
@@ -314,6 +322,16 @@ public class PasscodeView extends ViewGroup{
         InputMethodManager inputMethodManager = (InputMethodManager) getContext()
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.showSoftInput(mEditText, 0);
+    }
+
+    /**
+     * Set the error state for the view
+     *
+     * @param value Error value
+     */
+    public void setError(boolean value) {
+        mIsError = value;
+        invalidateChildViews();
     }
 
     @Override
@@ -440,16 +458,42 @@ public class PasscodeView extends ViewGroup{
         protected void onDraw(Canvas canvas) {
             float center = getWidth()/2;
 
-            if(isSelected())
+            canvas.drawColor(Color.TRANSPARENT);
+            // Set style each time because in case of error it could be reset to STROKE only
+            if (mIsControlFilled)
             {
-                mOuterPaint.setColor(mHighlightedColor);
+                mOuterPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+            } else {
+                mOuterPaint.setStyle(Paint.Style.STROKE);
+            }
+
+            if (mIsError)
+            {
+                if(isSelected())
+                {
+                    mOuterPaint.setColor(mHighlightedColor);
+                }
+                else
+                {
+                    mOuterPaint.setColor(mControlColor);
+                }
+                canvas.drawCircle(center, center, mDigitRadius, mOuterPaint);
+                mOuterPaint.setColor(mErrorColor);
+                mOuterPaint.setStyle(Paint.Style.STROKE);
+                canvas.drawCircle(center, center, mDigitRadius, mOuterPaint);
             }
             else
             {
-                mOuterPaint.setColor(mControlColor);
+                if(isSelected())
+                {
+                    mOuterPaint.setColor(mHighlightedColor);
+                }
+                else
+                {
+                    mOuterPaint.setColor(mControlColor);
+                }
+                canvas.drawCircle(center, center, mDigitRadius, mOuterPaint);
             }
-            canvas.drawColor(Color.TRANSPARENT);
-            canvas.drawCircle(center, center, mDigitRadius, mOuterPaint);
             if (mEditText.getText().length() > mPosition) {
                 if (mIsDigitMaksed) {
                     canvas.drawCircle(center, center, mDigitInnerRadius, mInnerPaint);
@@ -473,6 +517,10 @@ public class PasscodeView extends ViewGroup{
      * Listener that gets notified when the complete passcode has been entered
      */
     public interface PasscodeEntryListener{
+        /**
+         * Called when a passcode digit has been entered
+         */
+        void onPasscodeDigitEntered();
         /**
          * Called when all the digits of the passcode has been entered
          * @param passcode - The entered passcode
