@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         passcodeView:numDigits="5"
+        passcodeView:masked="true"
+        passcodeView:maskSymbol="*"
         passcodeView:digitRadius="16dp"
         passcodeView:digitInnerRadius="2dp"
         passcodeView:digitColorFilled="#ff0000"

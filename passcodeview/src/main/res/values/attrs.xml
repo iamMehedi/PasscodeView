@@ -12,6 +12,7 @@
         <attr name="digitColorBorder" format="color"/>
         <attr name="controlFilled" format="boolean"/>
         <attr name="masked" format="boolean"/>
+        <attr name="maskSymbol" format="string"/>
         <attr name="digitTextSize" format="dimension"/>
     </declare-styleable>
 </resources>

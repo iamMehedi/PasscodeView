@@ -48,6 +48,7 @@ public class PasscodeView extends ViewGroup{
 
     private boolean mIsControlFilled = false;
     private boolean mIsDigitMaksed = true;
+    private String mMaskSymbol = null;
     private float mDigitTextSize;
 
     private int mErrorColor;
@@ -110,6 +111,9 @@ public class PasscodeView extends ViewGroup{
 
         // If digits should be masked or shown as digits
         mIsDigitMaksed = array.getBoolean(R.styleable.PasscodeView_masked, true);
+
+        // Symbol of the mask if digit are masked
+        mMaskSymbol = array.getString(R.styleable.PasscodeView_maskSymbol);
 
         // Size of the numbers if not masked
         mDigitTextSize = array.getDimensionPixelSize(R.styleable.PasscodeView_digitTextSize,
@@ -496,10 +500,15 @@ public class PasscodeView extends ViewGroup{
                 canvas.drawCircle(center, center, mDigitRadius, mOuterPaint);
             }
             if (mEditText.getText().length() > mPosition) {
-                if (mIsDigitMaksed) {
+                if (mIsDigitMaksed && mMaskSymbol == null) {
                     canvas.drawCircle(center, center, mDigitInnerRadius, mInnerPaint);
                 } else {
-                    String text = String.valueOf(mEditText.getText().charAt(mPosition));
+                    String text;
+                    if (mIsDigitMaksed) {
+                        text = mMaskSymbol;
+                    } else {
+                        text = String.valueOf(mEditText.getText().charAt(mPosition));
+                    }
                     canvas.getClipBounds(r);
                     int cHeight = r.height();
                     int cWidth = r.width();
