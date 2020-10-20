@@ -42,7 +42,7 @@ compile 'online.devliving:passcodeview:1.0.3'
 - `setText(CharSequence text)` - Set Passcode programmatically
 - `clearText()` - Clear Passcode
 - `getText()` - get entered Passcode
-- `swetError(boolean value)` - set the error state of view
+- `setError(boolean value)` - set the error state of view
 - `setPasscodeEntryListener(PasscodeEntryListener mPasscodeEntryListener)` - Set a listener to get notified when the Passcode has been entered
 
 ### Listener:`PasscodeEntryListener`

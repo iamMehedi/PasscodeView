@@ -248,9 +248,11 @@ public class PasscodeView extends ViewGroup{
             public void afterTextChanged(Editable s) {
                 int length = s.length();
                 updateChilViewSelectionStates(length, mEditText.hasFocus());
-                mPasscodeEntryListener.onPasscodeDigitEntered();
-                if (length == mDigitCount && mPasscodeEntryListener != null) {
-                    mPasscodeEntryListener.onPasscodeEntered(s.toString());
+                if (mPasscodeEntryListener != null) {
+                    mPasscodeEntryListener.onPasscodeDigitEntered();
+                    if (length == mDigitCount) {
+                        mPasscodeEntryListener.onPasscodeEntered(s.toString());
+                    }
                 }
             }
         });
