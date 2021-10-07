@@ -16,7 +16,7 @@ An android widget to input passcode.
 ```
 ### Gradle
 ```groovy
-compile 'online.devliving:passcodeview:1.0.3'
+implementation 'online.devliving:passcodeview:1.0.3'
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ compile 'online.devliving:passcodeview:1.0.3'
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        passcodeView:numDigits="5"
+        app:passcodeView:numDigits="5"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         />
 ```
